@@ -5,20 +5,18 @@
 <table class="table">
     <thead>
         <tr>
-           <th>Id</th>
-           <th>Marka Id</th>
-           <th>Renk Id</th>
+           <th>Marka</th>
            <th>Model ismi</th>
+           <th>Renk</th>
            <th>Model yılı</th>
            <th>Günlük Ücret</th>
            <th>Açıklama</th>
         </tr>
     </thead>
     <tr *ngFor="let car of cars">
-        <td>{{car.id}}</td>
-        <td>{{car.brandId}}</td>
+        <td>{{car.brandName}}</td>
         <td>{{car.modelName}}</td>
-        <td>{{car.colorId}}</td>
+        <td>{{car.colorName}}</td>
         <td>{{car.modelYear}}</td>
         <td>{{car.dailyPrice}}</td>
         <td>{{car.description}}</td>
