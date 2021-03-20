@@ -5,7 +5,7 @@
     </div>
     <div class="carousel-inner">
         <div *ngFor="let image of carImages" [class]="getCurrentImageClass(image)">
-          <img src="{{imageBasePath}}{{image.imagePath}}" class="d-block w-100" width="640" height="480"  alt="Image">
+          <img [src]="image.imagePath !==null ? imageBasePath+ image.imagePath : imageBasePath + defaultImg" class="d-block w-100" width="640" height="480"  alt="Image">
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="prev">
@@ -38,12 +38,12 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let car of cars">
-            <td>{{car.brandName}}</td>
-            <td>{{car.colorName}}</td>
-            <td>{{car.modelYear}}</td>
-            <td>{{car.dailyPrice}}</td>
-            <td>{{car.description}}</td>
+        <tr>
+            <td>{{cars.brandName}}</td>
+            <td>{{cars.colorName}}</td>
+            <td>{{cars.modelYear}}</td>
+            <td>{{cars.dailyPrice}}</td>
+            <td>{{cars.description}}</td>
             <td><button type="button" class="btn btn-success">Rent</button></td>
     
         </tr>

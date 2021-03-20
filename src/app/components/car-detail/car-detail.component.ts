@@ -14,12 +14,13 @@ import { RentalService } from 'src/app/services/rental.service';
 })
 export class CarDetailComponent implements OnInit {
 
-  cars:Car[]=[];
+  cars:Car;
   rentals:Rental[]=[];
   carImages:CarImage[]=[];
   currentImage : CarImage;
   dataLoaded = false;
-  imageBasePath="https://localhost:44318/images/";
+  imageBasePath="https://localhost:44318/";
+  defaultImg = "Images/default.jpg"
 
   constructor(
     private carService:CarService,
@@ -36,7 +37,6 @@ export class CarDetailComponent implements OnInit {
       else{
         this.getImagesByCarId();
       }
-     
     });
   }
 
@@ -44,11 +44,14 @@ export class CarDetailComponent implements OnInit {
     this.carService.getCarDetailsById(carId).subscribe((response) => {
       this.cars = response.data;
       this.dataLoaded = true;
+      console.log(response)
     });
   }
   getImagesByCarId(){ 
-    this.imageService.getImagesByCarId(this.activatedRoute.snapshot.params["carId"]).subscribe((response)=>{
-      this.carImages=response.data;      
+    debugger;
+    this.imageService.getImagesByCarId(this.cars.carId).subscribe((response)=>{
+      this.carImages=response.data;  
+      console.log(response)
     });
   }
   getCurrentImageClass(image:CarImage){
