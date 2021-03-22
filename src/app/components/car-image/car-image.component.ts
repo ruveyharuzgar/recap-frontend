@@ -32,11 +32,6 @@ export class CarImageComponent implements OnInit {
     }))
   }
 
-  getCarImages(){
-this.carImageService.getCarImages().subscribe((response=>{
-  this.carImages=response.data;
-}))
-  }
   getImagesByCarId(carId:number){
     this.carImageService.getImagesByCarId(carId).subscribe((response=>{
       this.carImages=response.data;

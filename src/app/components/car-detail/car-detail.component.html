@@ -1,4 +1,26 @@
-<h3>Araç Detayları</h3>
+<!-- 
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button *ngFor="let image of carImages;let i = index" type="button" data-bs-target="#carouselExampleIndicators" attr.data-bs-slide-to="{{i}}" [class]="getButtonClass(image)" aria-current="true" aria-label="Slide 1"></button>
+  </div>
+  <div class="carousel-inner">
+      <div *ngFor="let image of carImages" [class]="getCurrentImageClass(image)">
+        <img [src]="image.imagePath !==null ? imageBasePath+ image.imagePath : imageBasePath + defaultImg" class="d-block w-100" width="640" height="480"  alt="Image">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+-->
+ 
+ <h3>Araç Detayları</h3>
+
   <div
   *ngIf="dataLoaded == false"
   class="spinner-border text-primary"
@@ -6,48 +28,6 @@
 >
   <span class="visually-hidden">Loading...</span>
 </div>
-
-<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" ></button>
-    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" ></button>
-    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" ></button>
-  </div>
-  <div class="carousel-inner">
-    <div *ngFor="let " class="carousel-item active" data-bs-interval="10000">
-      <img [src]="car.imagePath !=null ? imageBasePath+ car.imagePath : imageBasePath + defaultImg" class="d-block w-100">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <p>Some representative placeholder content for the first slide.</p>
-      </div>
-    </div>
-    <div class="carousel-item" data-bs-interval="2000">
-      <img src="..." class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>Some representative placeholder content for the second slide.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Some representative placeholder content for the third slide.</p>
-      </div>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"  data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"  data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-
-
-
 <table *ngIf="dataLoaded == true" class="table table-striped table-hover table-bordered">
     <thead>
         <tr>
@@ -69,11 +49,16 @@
             <td>{{cars.modelYear}}</td>
             <td>{{cars.dailyPrice | currency:'TRY':'TL':'':'fr' }}</td>
             <td>{{cars.description}}</td>
-            <td><button type="button" class="btn btn-outline-success">Kirala</button></td>
-    
+            <td>
+              <section style="float:right">
+                <button routerLink="/cars/rental" type="button" class="btn btn-outline-success">Kirala</button>
+              </section>
+           </td>
+
         </tr>
     </tbody>
-    <br>
+    <br> 
+
 
  <!--
 <h3>Kiralama</h3>  
@@ -88,5 +73,39 @@
               <th>Return Date</th>
           </tr>
       </thead>
-</table>
--->
+</table> 
+
+<div style="background-color:skyblue;"  class="w3-card-4  col-10">
+
+  <div *ngIf="dataLoaded==true" class="w3-container w3-center">
+    <h3 class="w3-xxlarge font-effect-shadow-multiple w3-lobster">{{car.brandName}}</h3>
+    <div class="row">
+      <div id="carouselExampleIndicators"  class="carousel slide" data-bs-ride="carousel">
+        <div style="background-color: skyblue;" class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+        </div>
+        <div class="carousel-inner" >
+          <div [class]= "getImagesByCarIdClass(car)" *ngFor="let car of  carImages" >
+            <img style="max-height:280px;background-size:contain;" src="https://localhost:5001{{car.imagePath}}"class="d-block w-100" alt="https://localhost:5001{{car.imagePath}}" >
+          </div>
+        </div>
+        <button  style="background-color: skyblue;" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button  style="background-color: skyblue;" class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"  data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <h5>{{car.description}}</h5>
+  
+    <button style="width:200px;"  class="btn btn-primary btn-outline-light  justify-content-between "> Kirala</button> 
+  </div>
+  
+  </div> -->

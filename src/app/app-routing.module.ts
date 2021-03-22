@@ -6,6 +6,7 @@ import { CarImageComponent } from './components/car-image/car-image.component';
 import { CarComponent } from './components/car/car.component';
 import { ColorComponent } from './components/color/color.component';
 import { CustomerComponent } from './components/customer/customer.component';
+import { RentalComponent } from './components/rental/rental.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,9 @@ const routes: Routes = [
   {path:"brands", component:BrandComponent},
 
   {path:"cars/carDetail/:carId", component:CarDetailComponent},
+
+  {path:"cars/rental", component:RentalComponent},
+
 ];
 
 @NgModule({
