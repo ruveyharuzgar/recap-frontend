@@ -12,6 +12,8 @@ export class CarImageComponent implements OnInit {
 
   carImages:CarImage[]=[];
   currentCarImage:CarImage;
+  imageBasePath="https://localhost:44318/";
+  defaultImg = "Images/default.jpg"
 
   constructor(private carImageService:CarImageService,
     private activatedRoute:ActivatedRoute

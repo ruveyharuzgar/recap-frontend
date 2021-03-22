@@ -3,10 +3,10 @@
   
    class="carousel slide border border-dark" data-bs-ride="carousel">
     <div class="carousel-inner">
-       
-      <div class="carousel-item " *ngFor="let image of carImages;  index as i; first as firstImage "  [ngClass]="{ active: firstImage }" >
-        <img src="https://localhost:44318/api/images/{{image.imagePath}}" class="d-block w-100" alt="image.imagePath">
-         
+
+      <div *ngFor="let image of carImages" class="carousel-item " >
+        <img [src]="image.imagePath !=null ? imageBasePath+ image.imagePath : imageBasePath + defaultImg" class="d-block w-100" alt="image.imagePath">
+
    </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>

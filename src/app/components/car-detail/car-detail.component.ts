@@ -15,7 +15,6 @@ import { RentalService } from 'src/app/services/rental.service';
 export class CarDetailComponent implements OnInit {
 
   cars:Car;
-  rentals:Rental[]=[];
   carImages:CarImage[]=[];
   currentImage : CarImage;
   dataLoaded = false;
@@ -26,7 +25,6 @@ export class CarDetailComponent implements OnInit {
     private carService:CarService,
     private activatedRoute:ActivatedRoute,
     private imageService:CarImageService,
-    private rentalService:RentalService,
   ) { }
 
   ngOnInit(): void {
@@ -48,7 +46,6 @@ export class CarDetailComponent implements OnInit {
     });
   }
   getImagesByCarId(){ 
-    debugger;
     this.imageService.getImagesByCarId(this.cars.carId).subscribe((response)=>{
       this.carImages=response.data;  
       console.log(response)

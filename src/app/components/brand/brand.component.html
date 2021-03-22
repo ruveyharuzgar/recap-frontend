@@ -8,18 +8,34 @@
 
 <table *ngIf="dataLoaded == true" class="table"></table>
 
-<ul class="list-group"> 
-  <h3>Markalar</h3>
+<ul class="list-group">
+  <div class="mb-3">
+    <label for="filterText" class="form-label"></label>
+    <input
+      type="text"
+      [(ngModel)]="filterText"
+      class="form-control"
+      id="filterText"
+      placeholder="Marka ara"
+    />
+  </div>
+
   <li
+    class="list-group-item list-group-item-action list-group-item-success"
     [class]="getAllBrandClass()"
-    routerLink="/cars">Tüm Markalar</li>
-    <li
+    routerLink="/cars"
+  >
+    Filtreleri Sil
+  </li>
+
+  <li
+    class="list-group-item list-group-item-action list-group-item-success"
     (click)="setCurrentBrand(brand)"
     routerLink="/cars/brand/{{ brand.brandId }}"
-    *ngFor="let brand of brands"
+    *ngFor="let brand of brands | brandFilterPipe: filterText"
     [class]="getCurrentBrandClass(brand)"
   >
     {{ brand.brandName }}
   </li>
 </ul>
-<hr>
+

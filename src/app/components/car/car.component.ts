@@ -13,6 +13,7 @@ export class CarComponent implements OnInit {
   dataLoaded = false;
   imageBasePath="https://localhost:44318/";
   defaultImg = "Images/default.jpg"
+  filterText="";
 
   constructor(
     private carService: CarService,

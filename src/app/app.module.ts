@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { registerLocaleData } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,7 +15,14 @@ import { RentalComponent } from './components/rental/rental.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { CarImageComponent } from './components/car-image/car-image.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
-import { FormsModule } from '@angular/forms';
+import { VatAddedPipe } from './pipes/vat-added.pipe';
+
+import { CarFilterPipePipe } from './pipes/car-filter-pipe.pipe';
+import { BrandFilterPipePipe } from './pipes/brand-filter-pipe.pipe';
+import { ColorFilterPipePipe } from './pipes/color-filter-pipe.pipe';
+
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr');
 
 @NgModule({
   declarations: [
@@ -24,13 +34,18 @@ import { FormsModule } from '@angular/forms';
     RentalComponent,
     CustomerComponent,
     CarImageComponent,
-    CarDetailComponent
+    CarDetailComponent,
+    VatAddedPipe,
+    CarFilterPipePipe,
+    BrandFilterPipePipe,
+    ColorFilterPipePipe,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
