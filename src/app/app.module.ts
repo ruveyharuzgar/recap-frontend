@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations' 
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,7 +22,10 @@ import { CarFilterPipePipe } from './pipes/car-filter-pipe.pipe';
 import { BrandFilterPipePipe } from './pipes/brand-filter-pipe.pipe';
 import { ColorFilterPipePipe } from './pipes/color-filter-pipe.pipe';
 
+import {ToastrModule} from 'ngx-toastr'
 import localeFr from '@angular/common/locales/fr';
+import { CarRentSummaryComponent } from './components/car-rent-summary/car-rent-summary.component';
+import { PaymentComponent } from './components/payment/payment.component';
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
@@ -39,6 +43,8 @@ registerLocaleData(localeFr, 'fr');
     CarFilterPipePipe,
     BrandFilterPipePipe,
     ColorFilterPipePipe,
+    CarRentSummaryComponent,
+    PaymentComponent,
 
   ],
   imports: [
@@ -46,6 +52,12 @@ registerLocaleData(localeFr, 'fr');
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      positionClass:"toast-bottom-right"
+    }),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

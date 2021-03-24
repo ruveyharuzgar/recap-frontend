@@ -1,34 +1,66 @@
-<div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
-    <span class="visually-hidden">Loading...</span>
+<div
+  *ngIf="dataLoaded == false"
+  class="spinner-border text-primary"
+  role="status"
+>
+  <span class="visually-hidden">Loading...</span>
+</div>
+
+<div class="mb-3">
+  <label for="filterText" class="form-label">Ara</label>
+  <input
+    type="text"
+    [(ngModel)]="filterText"
+    class="form-control"
+    id="filterText"
+    placeholder="Tarzına Uygun Aracı Ara..."
+  />
+</div>
+
+<div *ngIf="filterText" class="alert alert-success">
+  {{ filterText }} aradınız.
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div *ngFor="let car of cars | carFilterPipe: filterText" class="card">
+    <img 
+      [src]="
+        car.imagePath != null
+          ? imageBasePath + car.imagePath
+          : imageBasePath + defaultImg
+      "
+      class="card-img-top"
+      width="320"
+      height="200"
+      alt="{{ car.description }}"
+    />
+    <div class="card-body">
+      <h5 class="card-title d-flex justify-content-center">
+        {{ car.brandName| uppercase}}
+      </h5>
+      <hr>
+      <h5 class="card-title d-flex justify-content-center">
+        {{ car.modelName | uppercase }}
+      </h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <b>Kiralama Koşulları : </b> <br />
+        Ehliyet <br />
+        Kredi Kartı
+      </li>
+      <li class="list-group-item">Araç Özellikleri: {{ car.description }}</li>
+    </ul>
+    <div class="card-body">
+      <section style="float: right">
+        <button
+          routerLink="/cars/carDetail/{{ car.id }}"
+          type="button"
+          class="btn btn-outline-success"
+        >
+          Detaylar
+        </button>
+      </section>
+    </div>
   </div>
-
-  <div class="mb-3">
-    <label for="filterText" class="form-label">Ara</label>
-    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Tarzına Uygun Aracı Ara...">
-  </div>
-
-  <div *ngIf="filterText" class="alert alert-success">
-    {{filterText}} aradınız.
-  </div>
-
-
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div *ngFor="let car of cars | carFilterPipe:filterText " class="card">
-        <img [src]="car.imagePath !=null ? imageBasePath+ car.imagePath : imageBasePath + defaultImg" class="card-img-top" width="320" height="200" alt={{car.description}}>
-        <div class="card-body">
-          <h5 class="card-title d-flex justify-content-center">{{car.brandName }}</h5> <hr>
-          <h5 class="card-title d-flex justify-content-center">{{car.modelName | uppercase}}</h5> 
-
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item" ><b>Kiralama Koşulları : </b> <br> Ehliyet <br> Kredi Kartı</li>
-            <li class="list-group-item">Araç Özellikleri: {{car.description}}</li>
-
-          </ul>
-          <div class="card-body">
-              <section style="float:right">
-                  <button routerLink="/cars/carDetail/{{car.id}}" type="button" class="btn btn-outline-success">Detaylar</button>
-                </section>
-          </div>
-        </div>
-  </div>
+</div>

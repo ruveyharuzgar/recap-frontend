@@ -18,49 +18,57 @@
   </button>
 </div>
 -->
- 
- <h3>Araç Detayları</h3>
 
-  <div
+<h3>Araç Detayları</h3>
+
+<div
   *ngIf="dataLoaded == false"
   class="spinner-border text-primary"
   role="status"
 >
   <span class="visually-hidden">Loading...</span>
 </div>
-<table *ngIf="dataLoaded == true" class="table table-striped table-hover table-bordered">
-    <thead>
-        <tr>
-            <th>Marka</th>
-            <th>Model Adı</th>
-            <th>Renk</th>
-            <th>Model Yılı</th>
-            <th>Günlük Ücret</th>
-            <th>Açıklama</th>
-            <th> </th>
+<table
+  *ngIf="dataLoaded == true"
+  class="table table-striped table-hover table-bordered"
+>
+  <thead>
+    <tr>
+      <th>Marka</th>
+      <th>Model Adı</th>
+      <th>Renk</th>
+      <th>Model Yılı</th>
+      <th>Günlük Ücret</th>
+      <th>Açıklama</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ car.brandName }}</td>
+      <td>{{ car.modelName }}</td>
+      <td>{{ car.colorName }}</td>
+      <td>{{ car.modelYear }}</td>
+      <td>{{ car.dailyPrice | currency: "TRY":"TL":"":"fr" }}</td>
+      <td>{{ car.description }}</td>
+      <td>
+        <!-- <button click="addRent(car)" type="button" class="btn btn-outline-success">Kirala</button>   
+                  routerLink="/cars/rental/{{ car }}"       
+                -->
 
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{cars.brandName}}</td>
-            <td>{{cars.modelName}}</td>
-            <td>{{cars.colorName}}</td>
-            <td>{{cars.modelYear}}</td>
-            <td>{{cars.dailyPrice | currency:'TRY':'TL':'':'fr' }}</td>
-            <td>{{cars.description}}</td>
-            <td>
-              <section style="float:right">
-                <button routerLink="/cars/rental" type="button" class="btn btn-outline-success">Kirala</button>
-              </section>
-           </td>
+        <button
+          (click)="addRent(car)"
+          type="button"
+          class="btn btn-outline-success"
+        >
+          Kirala
+        </button>
+      </td>
+    </tr>
+  </tbody>
+  <br />
 
-        </tr>
-    </tbody>
-    <br> 
-
-
- <!--
+  <!--
 <h3>Kiralama</h3>  
     <table *ngIf="dataLoaded==true" class="table table-striped table-hover table-bordered">
       <thead>
@@ -109,3 +117,4 @@
   </div>
   
   </div> -->
+</table>

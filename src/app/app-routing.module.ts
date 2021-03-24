@@ -32,8 +32,9 @@ const routes: Routes = [
   {path:"brands", component:BrandComponent},
 
   {path:"cars/carDetail/:carId", component:CarDetailComponent},
+  
+  {path:"cars/rental/:carId", component:RentalComponent}
 
-  {path:"cars/rental", component:RentalComponent},
 
 ];
 

@@ -21,14 +21,7 @@ export class CarImageComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params=>{
-      if(params["carId"])
-      {
         this.getImagesByCarId(params["carId"])
-      }
-      else
-      {
-        
-      }
     }))
   }
 

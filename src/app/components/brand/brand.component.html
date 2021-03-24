@@ -5,8 +5,8 @@
 >
   <span class="visually-hidden">Loading...</span>
 </div>
-
 <table *ngIf="dataLoaded == true" class="table"></table>
+
 
 <ul class="list-group">
   <div class="mb-3">
@@ -37,5 +37,33 @@
   >
     {{ brand.brandName }}
   </li>
-</ul>
+</ul> 
+
+<!-- 
+  ts de değiştirilcek
+<div class="form-row align-items-center" >
+  <div class="col-md-12">
+    <label class="mr-sm-2" for="inlineFormCustomSelect"> Markalar </label>
+    <input
+    [(ngModel)]="filterText"
+    type="text"
+    class="form-control"
+    id="filterText"
+    style="margin-bottom: 10px;"
+    placeholder="Marka Ara"
+  />
+    <select class="custom-select custom-select-md mb-3" id="inlineFormCustomSelect" style="width: 250px;">
+      <option
+        (click)="setCurrentBrand(brand)"
+        routerLink="/cars/brand/{{brand.brandId}}"
+        *ngFor="let brand of brands | brandFilterPipe:filterText"
+        [class]="getCurrentBrandClass(brand)"
+      >
+      {{ brand.branName }}
+      </option>
+      <option [class]="getCurrentBrandClass(brand)" routerLink="/cars"> Filtreleri sil </option>
+    </select>
+  </div>
+</div> -->
+
 
