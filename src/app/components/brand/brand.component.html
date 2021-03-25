@@ -7,8 +7,53 @@
 </div>
 <table *ngIf="dataLoaded == true" class="table"></table>
 
+<div class="p-3 bg-white" style="width: 280px;">
+  <ul class="list-unstyled ps-0">
+    <ul class="list-group">
+    <li class="mb-1">
+      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+        Markalar
+      </button>
+      <div class="collapse" id="account-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <div class="mb-3">
+            <label for="filterText" class="form-label"></label>
+            <input
+              type="text"
+              [(ngModel)]="filterText"
+              class="form-control"
+              id="filterText"
+              placeholder="Marka ara"
+            />
+          </div>
 
-<ul class="list-group">
+          <li
+          class="list-group-item list-group-item-action list-group-item-dark"
+          [class]="getAllBrandClass()"
+          routerLink="/cars"
+        >
+          Filtreleri Sil
+        </li>
+
+          <li
+          class="list-group-item list-group-item-action list-group-item-dark"
+          (click)="setCurrentBrand(brand)"
+          routerLink="/cars/brand/{{ brand.brandId }}"
+          *ngFor="let brand of brands | brandFilterPipe: filterText"
+          [class]="getCurrentBrandClass(brand)"
+        >
+          {{ brand.brandName }}
+        </li>
+
+        </ul>
+      </div>
+    </li>
+  </ul>
+</ul>
+</div>
+
+
+<!-- <ul class="list-unstyled ps-0">
   <div class="mb-3">
     <label for="filterText" class="form-label"></label>
     <input
@@ -37,7 +82,7 @@
   >
     {{ brand.brandName }}
   </li>
-</ul> 
+</ul>  -->
 
 <!-- 
   ts de değiştirilcek

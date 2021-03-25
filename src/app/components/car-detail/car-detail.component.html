@@ -45,19 +45,19 @@
   </thead>
   <tbody>
     <tr>
-      <td>{{ car.brandName }}</td>
-      <td>{{ car.modelName }}</td>
-      <td>{{ car.colorName }}</td>
-      <td>{{ car.modelYear }}</td>
-      <td>{{ car.dailyPrice | currency: "TRY":"TL":"":"fr" }}</td>
-      <td>{{ car.description }}</td>
+      <td>{{ carDto.brandName }}</td>
+      <td>{{ carDto.modelName }}</td>
+      <td>{{ carDto.colorName }}</td>
+      <td>{{ carDto.modelYear }}</td>
+      <td>{{ carDto.dailyPrice | currency: "TRY":"TL":"":"fr" }}</td>
+      <td>{{ carDto.description }}</td>
       <td>
         <!-- <button click="addRent(car)" type="button" class="btn btn-outline-success">Kirala</button>   
                   routerLink="/cars/rental/{{ car }}"       
                 -->
 
         <button
-          (click)="addRent(car)"
+          (click)="addRent()"
           type="button"
           class="btn btn-outline-success"
         >

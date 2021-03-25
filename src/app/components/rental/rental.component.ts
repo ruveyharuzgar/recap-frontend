@@ -1,4 +1,5 @@
 import { Component,Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { CarDto } from 'src/app/models/carDto';
@@ -17,60 +18,63 @@ import { RentalService } from 'src/app/services/rental.service';
 export class RentalComponent implements OnInit {
 
   rentals:Rental[]=[];
-  rentalDtos:RentalDto[]=[];
-  customerDtos:CustomerDto[]=[];
+  rentalDetails:RentalDto[]=[];
+  customerDetails:CustomerDto[]=[];
 
-  customerId:number;
-  rentdate:Date;
-  returndate:Date;
+  
+  rentDate:Date;
+  returnDate:Date;
+
   rental: Rental;
+  customer:CustomerDto;
+  car:Car;
 
   dataLoaded=false;
 
   @Input() carRental:CarDto;
-  constructor(private rentalService:RentalService,
+  constructor(
+    private rentalService:RentalService,
     private customerService:CustomerService,
-    private toastrService:ToastrService
+    private toastrService:ToastrService,
+    private activatedRoute:ActivatedRoute
     ) { }
 
   ngOnInit(): void {
     this.getRentalDetails();
-    this.getAllCustomers();
+    this.getCustomerDetails();
   }
-
   getRentals(){
     this.rentalService.getRentals().subscribe(response=>{
       this.rentals=response.data
       this.dataLoaded=true;
     })
   }
-
   getRentalDetails(){
     this.rentalService.getRentalDetails().subscribe(response=>{
-      this.rentalDtos=response.data
+      this.rentalDetails=response.data
       this.dataLoaded=true;
     })
   }
-
-  getAllCustomers()
+  getCustomerDetails()
   {
     this.customerService.getCustomerDetails().subscribe(response => {
-      this.customerDtos = response.data;
+      this.customerDetails = response.data;
     });
   }
 
-  addRent()
+  addRental()
   {
-    let rent:Rental=
+    this.rental=
     {
-      carId:this.carRental.id,
-      customerId:this.customerId,
-      rentDate:this.rentdate,
-      returnDate:this.returndate,
-      price:this.carRental.dailyPrice
+      carId:this.car.id,
+      customerId:this.customer.id,
+      rentDate:this.rentDate,
+      returnDate:this.returnDate
     };
-    this.rental=rent;
-    this.toastrService.success("Kiralama işleminiz gerçekleşmiştir")
-
+    if(this.rental.rentDate)
+    {
+      this.toastrService.success("Kiralama işleminiz gerçekleşmiştir")
+    }
+    this.toastrService.error("Aracı Kiralayamazsınız")
   }
 }

@@ -18,6 +18,7 @@ export class CustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCustomers();
+    this.getCustomerDetails();
   }
 
   getCustomers(){

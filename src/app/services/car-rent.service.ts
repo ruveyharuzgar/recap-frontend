@@ -11,7 +11,7 @@ export class CarRentService {
   constructor() { }
 
   addRent(car:Car){
-    let item=CarRentItems.find(c=>c.car.carId===car.carId);
+    let item=CarRentItems.find(c=>c.car.id===car.id);
     if(item){
        item.returnDate;Date.now()
     }
