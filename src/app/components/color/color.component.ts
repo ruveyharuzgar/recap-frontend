@@ -5,13 +5,14 @@ import { ColorService } from 'src/app/services/color.service';
 @Component({
   selector: 'app-color',
   templateUrl: './color.component.html',
-  styleUrls: ['./color.component.css']
+  styleUrls: ['./color.component.css'],
 })
 export class ColorComponent implements OnInit {
   colors: Color[] = [];
-  currentColor: Color;
+  currentColor: Color = { colorId: -1, colorName: '' };
   dataLoaded = false;
-  filterText="";
+
+  filterText: string;
 
   constructor(private colorService: ColorService) {}
 
@@ -25,18 +26,23 @@ export class ColorComponent implements OnInit {
       this.dataLoaded = true;
     });
   }
-  setCurrentColor(color:Color) {
+  setCurrentColor(color: Color) {
     this.currentColor = color;
   }
-  getCurrentColorClass(color:Color) {
+  getCurrentColorClass(color: Color) {
     if (color == this.currentColor) {
       return 'list-group-item active';
     } else {
       return 'list-group-item';
     }
   }
+  removeCurrentColor() {
+    this.filterText = '';
+    this.currentColor = { colorId: -1, colorName: '' };
+  }
   getAllColorClass() {
-    if (!this.currentColor) {
+    let allColor: Color = { colorId: -1, colorName: '' };
+    if (this.currentColor.colorId == allColor.colorId) {
       return 'list-group-item active';
     } else {
       return 'list-group-item';

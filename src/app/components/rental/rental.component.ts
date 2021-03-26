@@ -2,11 +2,8 @@ import { Component,Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
-import { CarDto } from 'src/app/models/carDto';
 import { Customer } from 'src/app/models/customer';
-import { CustomerDto } from 'src/app/models/customerDto';
 import { Rental } from 'src/app/models/rental';
-import { RentalDto } from 'src/app/models/rentalDto';
 import { CustomerService } from 'src/app/services/customer.service';
 import { RentalService } from 'src/app/services/rental.service';
 
@@ -18,20 +15,18 @@ import { RentalService } from 'src/app/services/rental.service';
 export class RentalComponent implements OnInit {
 
   rentals:Rental[]=[];
-  rentalDetails:RentalDto[]=[];
-  customerDetails:CustomerDto[]=[];
-
+  customers:Customer[]=[];
   
   rentDate:Date;
   returnDate:Date;
 
   rental: Rental;
-  customer:CustomerDto;
   car:Car;
+  customer:Customer;
 
   dataLoaded=false;
 
-  @Input() carRental:CarDto;
+  @Input() carRental:Car;
   constructor(
     private rentalService:RentalService,
     private customerService:CustomerService,
@@ -51,14 +46,14 @@ export class RentalComponent implements OnInit {
   }
   getRentalDetails(){
     this.rentalService.getRentalDetails().subscribe(response=>{
-      this.rentalDetails=response.data
+      this.rentals=response.data
       this.dataLoaded=true;
     })
   }
   getCustomerDetails()
   {
     this.customerService.getCustomerDetails().subscribe(response => {
-      this.customerDetails = response.data;
+      this.customers = response.data;
     });
   }
 
@@ -66,10 +61,15 @@ export class RentalComponent implements OnInit {
   {
     this.rental=
     {
-      carId:this.car.id,
+      carId:this.car.carId,
       customerId:this.customer.id,
+      modelName:this.car.modelName,
+      brandName:this.car.brandName,
       rentDate:this.rentDate,
-      returnDate:this.returnDate
+      returnDate:this.returnDate,
+      customerFirstName:this.customer.firstName,
+      customerLastName:this.customer.lastName,
+      companyName:this.customer.companyName
     };
     if(this.rental.rentDate)
     {

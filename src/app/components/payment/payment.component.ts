@@ -15,6 +15,7 @@ export class PaymentComponent implements OnInit {
   creditCardNumber:string;
   expirationDate:string;
   securityCode:string;
+
   
 
   @Input() rentPayment:Rental;
@@ -35,7 +36,6 @@ export class PaymentComponent implements OnInit {
       creditCardNumber:this.creditCardNumber,
       expirationDate:this.expirationDate,
       securityCode:this.securityCode,
-      price:this.rentPayment.price,
       customerId:this.rentPayment.customerId
 
     };

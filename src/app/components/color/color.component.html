@@ -6,8 +6,7 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 
-<table *ngIf="dataLoaded == true" class="table"></table>
-<ul class="list-group">
+<ul *ngIf="dataLoaded == true" class="list-group">
   <div class="mb-3">
     <label for="filterText" class="form-label"> </label>
     <input
@@ -16,22 +15,24 @@
       class="form-control"
       id="filterText"
       placeholder="Renk Ara"
+      (click)="removeCurrentColor()"
+      aria-current="true"
     />
   </div>
 
   <li
     class="list-group-item list-group-item-action list-group-item-success"
-    [class]="getAllColorClass()"
     routerLink="/cars"
+    [ngClass]="getAllColorClass()"
   >
     Filtreleri Sil
   </li>
   <li
     class="list-group-item list-group-item-action list-group-item-success"
-    (click)="setCurrentColor(color)"
     routerLink="/cars/color/{{ color.colorId }}"
+    (click)="setCurrentColor(color)"
     *ngFor="let color of colors | colorFilterPipe: filterText"
-    [class]="getCurrentColorClass(color)"
+    [ngClass]="getCurrentColorClass(color)"
   >
     {{ color.colorName }}
   </li>

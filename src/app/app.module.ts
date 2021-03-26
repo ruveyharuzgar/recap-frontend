@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import { FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations' 
 
 
@@ -16,7 +17,6 @@ import { RentalComponent } from './components/rental/rental.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { CarImageComponent } from './components/car-image/car-image.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
-import { VatAddedPipe } from './pipes/vat-added.pipe';
 
 import { CarFilterPipePipe } from './pipes/car-filter-pipe.pipe';
 import { BrandFilterPipePipe } from './pipes/brand-filter-pipe.pipe';
@@ -24,7 +24,6 @@ import { ColorFilterPipePipe } from './pipes/color-filter-pipe.pipe';
 
 import {ToastrModule} from 'ngx-toastr'
 import localeFr from '@angular/common/locales/fr';
-import { CarRentSummaryComponent } from './components/car-rent-summary/car-rent-summary.component';
 import { PaymentComponent } from './components/payment/payment.component';
 registerLocaleData(localeFr, 'fr');
 
@@ -39,11 +38,9 @@ registerLocaleData(localeFr, 'fr');
     CustomerComponent,
     CarImageComponent,
     CarDetailComponent,
-    VatAddedPipe,
     CarFilterPipePipe,
     BrandFilterPipePipe,
     ColorFilterPipePipe,
-    CarRentSummaryComponent,
     PaymentComponent,
 
   ],
@@ -52,6 +49,7 @@ registerLocaleData(localeFr, 'fr');
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    CommonModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({

@@ -10,7 +10,7 @@ export class BrandFilterPipePipe implements PipeTransform {
     return filterText
       ? value.filter(
           (b: Brand) =>
-            b.brandName.toLocaleLowerCase().indexOf(filterText) !== -1
+            b.brandName.toLocaleLowerCase().indexOf(filterText.toString()) !== -1
         )
       : value;
   }
