@@ -31,10 +31,9 @@ export class CarDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      if(params["carId"])
-      {
         this.getCarDetailsById(params["carId"]);
-      }
+        this.getImagesByCarId(params["carId"]);
+
     });
   }
 

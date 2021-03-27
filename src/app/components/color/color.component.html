@@ -7,33 +7,37 @@
 </div>
 
 <ul *ngIf="dataLoaded == true" class="list-group">
-  <div class="mb-3">
-    <label for="filterText" class="form-label"> </label>
-    <input
-      type="text"
-      [(ngModel)]="filterText"
-      class="form-control"
-      id="filterText"
-      placeholder="Renk Ara"
-      (click)="removeCurrentColor()"
-      aria-current="true"
-    />
-  </div>
+  <div class="collapse" id="account-collapse">
+    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+      <div class="mb-3">
+        <label for="filterText" class="form-label"> </label>
+        <input
+          type="text"
+          [(ngModel)]="filterText"
+          class="form-control"
+          id="filterText"
+          placeholder="Renk Ara"
+          (click)="removeCurrentColor()"
+          aria-current="true"
+        />
+      </div>
 
-  <li
-    class="list-group-item list-group-item-action list-group-item-success"
-    routerLink="/cars"
-    [ngClass]="getAllColorClass()"
-  >
-    Filtreleri Sil
-  </li>
-  <li
-    class="list-group-item list-group-item-action list-group-item-success"
-    routerLink="/cars/color/{{ color.colorId }}"
-    (click)="setCurrentColor(color)"
-    *ngFor="let color of colors | colorFilterPipe: filterText"
-    [ngClass]="getCurrentColorClass(color)"
-  >
-    {{ color.colorName }}
-  </li>
+      <li
+        class="list-group-item list-group-item-action list-group-item-success"
+        routerLink="/cars"
+        [ngClass]="getAllColorClass()"
+      >
+        Filtreleri Sil
+      </li>
+      <li
+        class="list-group-item list-group-item-action list-group-item-success"
+        routerLink="/cars/color/{{ color.colorId }}"
+        (click)="setCurrentColor(color)"
+        *ngFor="let color of colors | colorFilterPipe: filterText"
+        [ngClass]="getCurrentColorClass(color)"
+      >
+        {{ color.colorName }}
+      </li>
+    </ul>
+  </div>
 </ul>

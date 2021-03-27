@@ -7,34 +7,47 @@
 </div>
 
 <ul *ngIf="dataLoaded == true" class="list-group">
-  <div class="mb-3">
-    <label for="filterText" class="form-label"></label>
-    <input
-      type="text"
-      [(ngModel)]="filterText"
-      class="form-control"
-      id="filterText"
-      placeholder="Marka ara"
-    />
+
+  <button
+    class="btn btn-toggle align-items-center"
+    data-bs-toggle="collapse"
+    data-bs-target="#account-collapse"
+  >
+
+    Filtrele
+
+  </button>
+
+  <div class="collapse" id="account-collapse">
+    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+      <label for="filterText" class="form-label"></label>
+      <input
+        type="text"
+        [(ngModel)]="filterText"
+        class="form-control"
+        id="filterText"
+        placeholder="Marka ara"
+      />
+
+      <li
+        class="list-group-item list-group-item-action list-group-item-success"
+        routerLink="/cars"
+        [ngClass]="getAllBrandClass()"
+        (click)="removeCurrentBrand()"
+        aria-current="true"
+      >
+        Filtreleri Sil
+      </li>
+
+      <li
+        class="list-group-item list-group-item-action list-group-item-success"
+        routerLink="/cars/brand/{{ brand.brandId }}"
+        (click)="setCurrentBrand(brand)"
+        *ngFor="let brand of brands | brandFilterPipe: filterText"
+        [ngClass]="getCurrentBrandClass(brand)"
+      >
+        {{ brand.brandName }}
+      </li>
+    </ul>
   </div>
-
-  <li
-    class="list-group-item list-group-item-action list-group-item-success"
-    routerLink="/cars"
-    [ngClass]="getAllBrandClass()"
-    (click)="removeCurrentBrand()"
-    aria-current="true"
-  >
-    Filtreleri Sil
-  </li>
-
-  <li
-    class="list-group-item list-group-item-action list-group-item-success"
-    routerLink="/cars/brand/{{ brand.brandId }}"
-    (click)="setCurrentBrand(brand)"
-    *ngFor="let brand of brands | brandFilterPipe: filterText"
-    [ngClass]="getCurrentBrandClass(brand)"
-  >
-    {{ brand.brandName }}
-  </li>
 </ul>

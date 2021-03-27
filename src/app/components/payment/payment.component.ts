@@ -26,10 +26,12 @@ export class PaymentComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.addPayment();
   }
 
   addPayment()
   {
+    console.log("çalıştı");
     let rent:Rental=this.rentPayment;
     let payment:Payment=
     {

@@ -35,8 +35,7 @@ export class RentalComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.getRentalDetails();
-    this.getCustomerDetails();
+    this.addRental();
   }
   getRentals(){
     this.rentalService.getRentals().subscribe(response=>{
