@@ -1,1 +1,195 @@
-<p>payment works!</p>
+<div *ngIf="paymentItems" class="row">
+  <div class="col-md-4 order-md-2 mb-4">
+    <h4 class="d-flex justify-content-between align-items-center mb-3">
+      <span class="text-muted">Sepetiniz</span>
+    </h4>
+    <ul class="list-group mb-3">
+      <li
+        *ngFor="let paymentItem of paymentItems"
+        class="list-group-item d-flex justify-content-between lh-condensed"
+      >
+        <div>
+          <h5 class="my-0">{{ paymentItem.car.modelName }}</h5>
+        </div>
+        <span class="text-muted"
+          >{{ paymentItem.car.dailyPrice | currency: "TRY":"TL":"":"fr" }}
+        </span>
+      </li>
+
+      <li
+        *ngFor="let paymentItem of paymentItems"
+        class="list-group-item d-flex justify-content-between"
+      >
+        <span>Toplam</span>
+        <strong>{{
+          paymentItem.car.dailyPrice | currency: "TRY":"TL":"":"fr"
+        }}</strong>
+      </li>
+    </ul>
+
+    <form class="card p-2">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Promo code" />
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-secondary">Redeem</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-8 order-md-1">
+    <form class="needs-validation" novalidate>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="firstName">Adınız</label>
+          <input
+            type="text"
+            class="form-control"
+            id="firstName"
+            placeholder=""
+            value=""
+            required
+          />
+          <div class="invalid-feedback">Valid first name is required.</div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="lastName">Soyadınız</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            placeholder=""
+            value=""
+            required
+          />
+          <div class="invalid-feedback">Valid last name is required.</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <label for="datetime-local">
+          Kiralayacağınız gün aralığını giriniz
+        </label>
+        <input type="datetime-local" class="form-control" id="datetime-local" />
+        <input type="datetime-local" class="form-control" id="datetime-local" />
+      </div>
+      <hr class="mb-4" />
+
+      <div class="col-md-6 offset-md-3">
+        <span class="anchor" id="formPayment"></span>
+
+        <div class="card card-outline-secondary">
+          <div class="card-body">
+            <h3 class="text-center">Credit Card Payment</h3>
+            <hr />
+            <div class="alert alert-info p-2 pb-3">
+              <a
+                class="close font-weight-normal initialism"
+                data-dismiss="alert"
+                href="#"
+                ><samp>×</samp></a
+              >
+              CVC code is required.
+            </div>
+            <form class="form" role="form" autocomplete="off">
+              <div class="form-group">
+                <label for="cc_name">Card Holder's Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cc_name"
+                  pattern="\w+ \w+.*"
+                  title="First and last name"
+                  required="required"
+                />
+              </div>
+              <div class="form-group">
+                <label>Card Number</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  autocomplete="off"
+                  maxlength="20"
+                  pattern="\d{16}"
+                  title="Credit card number"
+                  required=""
+                />
+              </div>
+              <div class="form-group row">
+                <label class="col-md-12">Card Exp. Date</label>
+                <div class="col-md-4">
+                  <select class="form-control" name="cc_exp_mo" size="0">
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <select class="form-control" name="cc_exp_yr" size="0">
+                    <option>2020</option>
+                    <option>2021</option>
+                    <option>2022</option>
+                    <option>2023</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <input
+                    type="text"
+                    class="form-control"
+                    autocomplete="off"
+                    maxlength="3"
+                    pattern="\d{3}"
+                    title="Three digits at back of your card"
+                    required=""
+                    placeholder="CVC"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <label class="col-md-12">Ödenecek Tutar</label>
+              </div>
+              <div class="form-inline">
+                <div class="input-group">
+                  <input
+                    *ngFor="let paymentItem of paymentItems"
+                    type="text"
+                    class="form-control text-right"
+                    id="exampleInputAmount"
+                    placeholder="{{ paymentItem.car.dailyPrice }}"
+                  />
+                  <div class="input-group-append">
+                    <span class="input-group-text">.00</span>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="form-group row">
+                <div class="col-md-6">
+                  <button type="reset" class="btn btn-default btn-lg btn-block">
+                    Cancel
+                  </button>
+                </div>
+                <div class="col-md-6">
+                  <button
+                    type="submit"
+                    class="btn btn-success btn-lg btn-block"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

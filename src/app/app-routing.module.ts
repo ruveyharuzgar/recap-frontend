@@ -30,7 +30,7 @@ const routes: Routes = [
 
   { path: 'cars/rental', component: RentalComponent },
 
-  { path: 'cars/payment', component: PaymentComponent },
+  { path: 'payment', component: PaymentComponent },
 
 ];
 

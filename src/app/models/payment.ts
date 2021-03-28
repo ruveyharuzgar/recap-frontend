@@ -1,7 +1,8 @@
-export interface Payment{
-    id?:number,
-    customerId:number;
-    creditCardNumber:string;
-    expirationDate:string;
-    securityCode:string;
+import { Car } from "./car";
+
+export class Payment{
+    car:Car;
+    creditCardNumber?:string;
+    expirationDate?:string;
+    securityCode?:string;
 }

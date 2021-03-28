@@ -35,7 +35,8 @@ export class RentalComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.addRental();
+    /* this.addRental(); */
+    
   }
   getRentals(){
     this.rentalService.getRentals().subscribe(response=>{
@@ -56,7 +57,8 @@ export class RentalComponent implements OnInit {
     });
   }
 
-  addRental()
+
+ /*  addRental()
   {
     this.rental=
     {
@@ -75,5 +77,5 @@ export class RentalComponent implements OnInit {
       this.toastrService.success("Kiralama işleminiz gerçekleşmiştir")
     }
     this.toastrService.error("Aracı Kiralayamazsınız")
-  }
+  } */
 }
