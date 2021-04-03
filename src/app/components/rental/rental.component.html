@@ -6,7 +6,7 @@
   <table class="table">
     <thead>
         <tr>
-           <th>Marka</th>
+           <th>Model</th>
            <th>Müşteri Adı</th>
            <th>Müşteri Soyadı</th>
            <th>Kiralama Tarihi</th>
@@ -14,7 +14,7 @@
         </tr>
     </thead>
     <tr *ngFor="let rental of rentals">
-        <td>{{rental.brandName}}</td>
+        <td>{{rental.modelName}}</td>
         <td>{{rental.customerFirstName}}</td>
         <td>{{rental.customerLastName}}</td>
         <td>{{rental.rentDate}}</td>

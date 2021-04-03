@@ -3,9 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { CarImage } from 'src/app/models/carImage';
+import { Rental } from 'src/app/models/rental';
 import { CarImageService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
 import { PaymentService } from 'src/app/services/payment.service';
+import { RentalService } from 'src/app/services/rental.service';
 
 @Component({
   selector: 'app-car-detail',
@@ -18,6 +20,7 @@ export class CarDetailComponent implements OnInit {
   currentImage: CarImage;
   dataLoaded = false;
 
+  rent:Rental[];
   carRent: Car[] = [];
   imageBasePath = 'https://localhost:44318/';
   defaultImg = 'Images/default.jpg';
@@ -27,7 +30,8 @@ export class CarDetailComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private carImageService: CarImageService,
     private toastrService: ToastrService,
-    private paymentService: PaymentService
+    private paymentService: PaymentService,
+    private rentalService:RentalService
   ) {}
 
   ngOnInit(): void {

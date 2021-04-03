@@ -15,7 +15,7 @@ export class PaymentComponent implements OnInit {
   
 
   paymentItems:Payment[];
-
+  rentals:Rental[];
 
   constructor(
     private paymnetService:PaymentService

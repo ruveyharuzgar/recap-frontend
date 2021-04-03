@@ -25,6 +25,7 @@ import { ColorFilterPipePipe } from './pipes/color-filter-pipe.pipe';
 import {ToastrModule} from 'ngx-toastr'
 import localeFr from '@angular/common/locales/fr';
 import { PaymentComponent } from './components/payment/payment.component';
+import { CarAddComponent } from './components/car-add/car-add.component';
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
@@ -42,6 +43,7 @@ registerLocaleData(localeFr, 'fr');
     BrandFilterPipePipe,
     ColorFilterPipePipe,
     PaymentComponent,
+    CarAddComponent,
 
   ],
   imports: [
@@ -50,8 +52,8 @@ registerLocaleData(localeFr, 'fr');
     HttpClientModule,
     FormsModule,
     CommonModule,
-    ReactiveFormsModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"
     }),

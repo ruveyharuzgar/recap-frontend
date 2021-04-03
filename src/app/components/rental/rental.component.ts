@@ -35,7 +35,7 @@ export class RentalComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    /* this.addRental(); */
+     this.addRental(); 
     
   }
   getRentals(){
@@ -56,18 +56,16 @@ export class RentalComponent implements OnInit {
       this.customers = response.data;
     });
   }
-
-
- /*  addRental()
+ addRental()
   {
     this.rental=
     {
+      id:this.rental.id,
       carId:this.car.carId,
       customerId:this.customer.id,
       modelName:this.car.modelName,
-      brandName:this.car.brandName,
-      rentDate:this.rentDate,
-      returnDate:this.returnDate,
+      rentDate:this.rental.rentDate,
+      returnDate:this.rental.returnDate,
       customerFirstName:this.customer.firstName,
       customerLastName:this.customer.lastName,
       companyName:this.customer.companyName
@@ -77,5 +75,5 @@ export class RentalComponent implements OnInit {
       this.toastrService.success("Kiralama işleminiz gerçekleşmiştir")
     }
     this.toastrService.error("Aracı Kiralayamazsınız")
-  } */
+  } 
 }

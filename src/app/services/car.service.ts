@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Car } from '../models/car';
+import { ListModel } from '../models/listModel';
 import { ListResponseModel } from '../models/listResponseModel';
 import { ObjectResponseModel } from '../models/objectResponseModel';
 
@@ -50,5 +51,8 @@ export class CarService {
       '&colorName=' +
       colorName;
     return this.httpClient.get<ListResponseModel<Car>>(newPath);
+  }
+  add(car:Car):Observable<ListModel>{
+    return this.httpClient.post<ListModel>(this.apiUrl+"cars/add",car);
   }
 }
