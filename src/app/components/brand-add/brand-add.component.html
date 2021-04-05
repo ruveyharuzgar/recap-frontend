@@ -1,0 +1,28 @@
+<div class="content">
+  <div class="col-md-12">
+    <div class="card border-success mb-3">
+      <div class="card-header bg-transparent border-success">
+        <h5>Marka Ekle</h5>
+
+        <div class="card-body text-success">
+          <form [formGroup]="brandAddForm">
+            <div class="mb-3">
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="brandName"
+                  formControlName="brandName"
+                  class="form-control"
+                  placeholder="Marka giriniz"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer bg-transparent border-success">
+          <button class="btn btn-outline-success" (click)="add()">Ekle</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

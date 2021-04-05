@@ -1,44 +1,43 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,FormBuilder,FormControl,Validators } from "@angular/forms"
 import { ToastrService } from 'ngx-toastr';
 import { CarService } from 'src/app/services/car.service';
+import { FormGroup,FormBuilder,FormControl,Validators } from "@angular/forms";
 
 @Component({
-  selector: 'app-car-add',
-  templateUrl: './car-add.component.html',
-  styleUrls: ['./car-add.component.css']
+  selector: 'app-car-update',
+  templateUrl: './car-update.component.html',
+  styleUrls: ['./car-update.component.css']
 })
-export class CarAddComponent implements OnInit {
+export class CarUpdateComponent implements OnInit {
 
-  carAddForm:FormGroup;
+  carUpdateForm:FormGroup;
   constructor(
     private formBuilder:FormBuilder,
     private carService:CarService,
     private toastrService:ToastrService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
-    this.createCarAddForm();
+    this.createCarUpdateForm();
   }
 
-  createCarAddForm(){
-    this.carAddForm=this.formBuilder.group({
-      modelName:["",Validators.required],
-      brandId:["",Validators.required],
-      colorId:["",Validators.required],
-      modelYear:["",Validators.required],
-      dailyPrice:["",Validators.required],
-      description:["",Validators.required],
+  createCarUpdateForm(){
+    this.carUpdateForm=this.formBuilder.group({
+      carId:["",Validators.required],
+      brandName:["",Validators.required]
     })
   }
 
-  add(){
-    if(this.carAddForm.valid){
-      let carModel=Object.assign({},this.carAddForm.value)
-      this.carService.add(carModel).subscribe(response=>{
+ /*  güncelleme yaparken araba renk ve model id ile yapıyorsun */
+  update(){
+    if(this.carUpdateForm.valid){
+      let carModel=Object.assign({},this.carUpdateForm.value)
+      this.carService.update(carModel).subscribe(response=>{
+        console.log(response)
         this.toastrService.success(response.message,"Başarılı")
       },responseError=>{
         if(responseError.error.ValidationError.length>0){
+          console.log(responseError)
           for (let i = 0; i< responseError.error.ValidationError.length; i++) {
           this.toastrService.error(responseError.error.ValidationError[i].ErrorMessage,"Doğrulama Hatası")
           }
@@ -47,6 +46,6 @@ export class CarAddComponent implements OnInit {
     }else{
       this.toastrService.error("Başarısız")
     }
-
   }
+
 }

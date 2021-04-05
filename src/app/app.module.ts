@@ -26,6 +26,11 @@ import {ToastrModule} from 'ngx-toastr'
 import localeFr from '@angular/common/locales/fr';
 import { PaymentComponent } from './components/payment/payment.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
+import { ColorAddComponent } from './components/color-add/color-add.component';
+import { BrandAddComponent } from './components/brand-add/brand-add.component';
+import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
+import { ColorUpdateComponent } from './components/color-update/color-update.component';
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
@@ -44,6 +49,11 @@ registerLocaleData(localeFr, 'fr');
     ColorFilterPipePipe,
     PaymentComponent,
     CarAddComponent,
+    ColorAddComponent,
+    BrandAddComponent,
+    BrandUpdateComponent,
+    CarUpdateComponent,
+    ColorUpdateComponent,
 
   ],
   imports: [

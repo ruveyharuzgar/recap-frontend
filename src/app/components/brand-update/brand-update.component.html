@@ -1,0 +1,37 @@
+<div class="content">
+    <div class="col-md-12">
+      <div class="card border-success mb-3">
+        <div class="card-header bg-transparent border-success">
+          <h5>Marka Güncelle</h5>
+  
+          <div class="card-body text-success">
+            <form [formGroup]="brandUpdateForm">
+              <div class="mb-3">
+                <div class="form-group">
+                    <input
+                      type="number"
+                      id="brandId"
+                      formControlName="brandId"
+                      class="form-control"
+                      placeholder="Marka Id "
+                    />
+                  </div>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    id="brandName"
+                    formControlName="brandName"
+                    class="form-control"
+                    placeholder="Marka giriniz"
+                  />
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="card-footer bg-transparent border-success">
+            <button class="btn btn-outline-success" (click)="update()">Güncelle</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
