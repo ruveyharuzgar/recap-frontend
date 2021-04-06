@@ -1,0 +1,51 @@
+<div
+  *ngIf="dataLoaded == false"
+  class="spinner-border text-primary"
+  role="status"
+>
+  <span class="visually-hidden">Loading...</span>
+</div>
+
+<ul *ngIf="dataLoaded == true" class="list-group">
+  <div class="mb-3">
+    <label for="filterText" class="form-label">Tüm Markalar</label>
+    <section style="float: right">
+      <button
+        type="button"
+        style="position: -webkit-sticky"
+        class="btn btn-outline-success"
+        routerLink="brands/add"
+      >
+        Marka Ekle
+      </button>
+
+    </section>
+    <input
+      type="text"
+      [(ngModel)]="filterText"
+      class="form-control"
+      id="filterText"
+      placeholder="Marka ara"
+    />
+  </div>
+<ul *ngFor="let brand of brands | brandFilterPipe: filterText"
+>
+Id: {{brand.brandId}}
+ <li
+    class="list-group-item list-group-item-action list-group-item-success"
+  >
+    {{ brand.brandName }}
+    <section style="float: right">
+      <button
+        type="button"
+        style="position: -webkit-sticky"
+        class="btn btn-outline-success"
+        routerLink="brands/update"
+      >
+        Düzenle
+      </button>
+
+    </section>
+  </li> 
+</ul>
+</ul>

@@ -1,0 +1,51 @@
+<div
+  *ngIf="dataLoaded == false"
+  class="spinner-border text-primary"
+  role="status"
+>
+  <span class="visually-hidden">Loading...</span>
+</div>
+
+<ul *ngIf="dataLoaded == true" class="list-group">
+  <div class="mb-3">
+    <label for="filterText" class="form-label">Tüm Renkler</label>
+    <section style="float: right">
+      <button
+        type="button"
+        style="position: -webkit-sticky"
+        class="btn btn-outline-success"
+        routerLink="colors/add"
+      >
+        Renk Ekle
+      </button>
+
+    </section>
+    <input
+      type="text"
+      [(ngModel)]="filterText"
+      class="form-control"
+      id="filterText"
+      placeholder="Renk ara"
+    />
+  </div>
+<ul *ngFor="let color of colors | colorFilterPipe: filterText"
+>
+Id: {{color.colorId}}
+ <li
+    class="list-group-item list-group-item-action list-group-item-success"
+  >
+    {{ color.colorName }}
+    <section style="float: right">
+      <button
+        type="button"
+        style="position: -webkit-sticky"
+        class="btn btn-outline-success"
+        routerLink="colors/update"
+      >
+        Düzenle
+      </button>
+
+    </section>
+  </li> 
+</ul>
+</ul>

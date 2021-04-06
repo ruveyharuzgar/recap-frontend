@@ -4,7 +4,7 @@ export interface Rental {
   customerId:number;
   companyName:string;
   rentDate:Date;
-  returnDate:Date;
+  returnDate?:Date;
   modelName: string;
   customerFirstName: string;
   customerLastName: string;

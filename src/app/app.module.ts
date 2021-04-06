@@ -31,6 +31,10 @@ import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
 import { CarUpdateComponent } from './components/car-update/car-update.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
+import { RentalAddComponent } from './components/rental-add/rental-add.component';
+import { BrandListComponent } from './components/brand-list/brand-list.component';
+import { ColorListComponent } from './components/color-list/color-list.component';
+import { CarListComponent } from './components/car-list/car-list.component';
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
@@ -54,6 +58,10 @@ registerLocaleData(localeFr, 'fr');
     BrandUpdateComponent,
     CarUpdateComponent,
     ColorUpdateComponent,
+    RentalAddComponent,
+    BrandListComponent,
+    ColorListComponent,
+    CarListComponent,
 
   ],
   imports: [
