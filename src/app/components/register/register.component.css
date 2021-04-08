@@ -38,7 +38,8 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
- 
+
+
 @media (min-width: 768px) {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;

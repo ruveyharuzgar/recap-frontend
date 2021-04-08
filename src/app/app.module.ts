@@ -38,6 +38,7 @@ import { CarListComponent } from './components/car-list/car-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { RegisterComponent } from './components/register/register.component';
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
@@ -66,6 +67,7 @@ registerLocaleData(localeFr, 'fr');
     ColorListComponent,
     CarListComponent,
     LoginComponent,
+    RegisterComponent,
 
   ],
   imports: [

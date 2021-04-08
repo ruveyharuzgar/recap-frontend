@@ -45,4 +45,8 @@ export class BrandUpdateComponent implements OnInit {
       this.toastrService.error("Başarısız")
     }
   }
+  info()
+  {
+    this.toastrService.info("Lütfen seçtiğiniz markanın,değiştirmek istediğiniz marka ile aynı Id'ye sahip olduğuna dikkat ediniz.")
+  }
 }

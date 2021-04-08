@@ -65,5 +65,7 @@ export class CarDetailComponent implements OnInit {
       return 'carousel-item';
     }
   }
-
+  info(){
+    alert("Araba Id: "+ this.cars.id)
+  }
 }

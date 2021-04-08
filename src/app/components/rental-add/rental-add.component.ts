@@ -13,7 +13,7 @@ import { CarDetailComponent } from '../car-detail/car-detail.component';
 export class RentalAddComponent implements OnInit {
 
   rentalAddForm:FormGroup;
-  carId:Car;
+  cars:Car;
 
   constructor(
     private formBuilder:FormBuilder,
@@ -47,5 +47,9 @@ export class RentalAddComponent implements OnInit {
     }else{
       this.toastrService.error("Eksik bilgi girdiniz")
     }
+}
+info()
+{
+  this.toastrService.info("Lütfen Araba Id bilgisini doğru giriniz.")
 }
 }

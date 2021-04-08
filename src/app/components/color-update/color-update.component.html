@@ -3,13 +3,14 @@
     <div class="col-md-12">
       <div class="card border-success mb-3">
         <div class="card-header bg-transparent border-success">
-          <h5>Renk Güncelle</h5>
-  
+          <h5 class="title">Renk Güncelle</h5>
+        </div>
           <div class="card-body text-success">
             <form [formGroup]="colorUpdateForm">
               <div class="mb-3">
                 <div class="form-group">
                     <input
+                      (click)="info()"
                       type="number"
                       id="colorId"
                       formControlName="colorId"
@@ -32,7 +33,7 @@
           <div class="card-footer bg-transparent border-success">
             <button class="btn btn-outline-success" (click)="update()">Güncelle</button>
           </div>
-        </div>
+        
       </div>
     </div>
   </div>

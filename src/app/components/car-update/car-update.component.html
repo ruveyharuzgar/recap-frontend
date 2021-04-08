@@ -2,36 +2,104 @@
     <div class="col-md-12">
       <div class="card border-success mb-3">
         <div class="card-header bg-transparent border-success">
-          <h5>Araç Güncelle</h5>
-  
+          <h5 class="title">Araç Güncelle </h5>
+        </div>
           <div class="card-body text-success">
             <form [formGroup]="carUpdateForm">
               <div class="mb-3">
+                <label for="carId">Id</label>
                 <div class="form-group">
-                    <input
-                      type="number"
-                      id="carId"
-                      formControlName="carId"
-                      class="form-control"
-                      placeholder="Araba Id "
-                    />
-                  </div>
+                  <input
+                    (click)="info()"
+                    type="number"
+                    id="carId"
+                    formControlName="carId"
+                    class="form-control"
+                    placeholder="Güncellemek İstediğiniz Aracın Id'sini Giriniz"
+                  />
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="modelName">Model</label>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    id="modelName"
+                    formControlName="modelName"
+                    class="form-control"
+                    placeholder="Model Giriniz"
+                  />
+                </div>
+              </div>
+    
+              <div class="mb-3">
+                <label for="brandName">Marka</label>
                 <div class="form-group">
                   <input
                     type="text"
                     id="brandName"
                     formControlName="brandName"
                     class="form-control"
-                    placeholder="Marka giriniz"
+                    placeholder="Marka Giriniz"
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="colorName">Renk</label>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    id="colorName"
+                    formControlName="colorName"
+                    class="form-control"
+                    placeholder="Renk Giriniz"
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="modelYear">Model Yılı</label>
+                <div class="form-group">
+                  <input
+                    type="number"
+                    id="modelYear"
+                    formControlName="modelYear"
+                    class="form-control"
+                    placeholder="Model Yılı Giriniz"
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="dailyPrice">Günlük Ücret</label>
+                <div class="form-group">
+                  <input
+                    type="number"
+                    id="dailyPrice"
+                    formControlName="dailyPrice"
+                    class="form-control"
+                    placeholder="Günlük Ücreti Giriniz"
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="description">Açıklama</label>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    id="description"
+                    formControlName="description"
+                    class="form-control"
+                    placeholder="Açıklama Giriniz"
                   />
                 </div>
               </div>
             </form>
           </div>
           <div class="card-footer bg-transparent border-success">
-            <button class="btn btn-outline-success" (click)="update()">Güncelle</button>
+            <button class="btn btn-outline-success" 
+            (click)="update()">Güncelle</button>
           </div>
-        </div>
+       
       </div>
     </div>
   </div>

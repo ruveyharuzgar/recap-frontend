@@ -44,7 +44,11 @@ export class ColorUpdateComponent implements OnInit {
         }
       })
     }else{
-      this.toastrService.error("Başarısız")
+      this.toastrService.error("Renk Güncelleme Başarısız")
     }
+  }
+  info()
+  {
+    this.toastrService.info("Lütfen seçtiğiniz rengin,değiştirmek istediğiniz renkle aynı Id'ye sahip olduğuna dikkat ediniz.")
   }
 }

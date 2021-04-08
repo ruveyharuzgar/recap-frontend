@@ -24,11 +24,14 @@ export class CarUpdateComponent implements OnInit {
   createCarUpdateForm(){
     this.carUpdateForm=this.formBuilder.group({
       carId:["",Validators.required],
-      brandName:["",Validators.required]
+      brandName:["",Validators.required],
+      colorName:["",Validators.required],
+      modelYear:["",Validators.required],
+      dailyPrice:["",Validators.required],
+      description:["",Validators.required]
     })
   }
 
- /*  güncelleme yaparken araba renk ve model id ile yapıyorsun */
   update(){
     if(this.carUpdateForm.valid){
       let carModel=Object.assign({},this.carUpdateForm.value)
@@ -44,8 +47,12 @@ export class CarUpdateComponent implements OnInit {
         }
       })
     }else{
-      this.toastrService.error("Başarısız")
+      this.toastrService.error("Güncelleme Başarısız")
     }
   }
 
+  info()
+  {
+    this.toastrService.info("Lütfen seçtiğiniz aracın,değiştirmek istediğiniz araçla aynı Id'ye sahip olduğuna dikkat ediniz.")
+  }
 }

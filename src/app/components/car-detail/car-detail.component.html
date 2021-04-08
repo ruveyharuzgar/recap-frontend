@@ -5,43 +5,51 @@
 >
   <span class="visually-hidden">Loading...</span>
 </div>
-<table
-  *ngIf="dataLoaded == true"
-  class="table table-striped table-hover table-bordered"
->
-  <thead>
-    <tr>
-      <th>Marka</th>
-      <th>Model Adı</th>
-      <th>Renk</th>
-      <th>Model Yılı</th>
-      <th>Günlük Ücret</th>
-      <th>Açıklama</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>{{ cars.brandName }}</td>
-      <td>{{ cars.modelName }}</td>
-      <td>{{ cars.colorName }}</td>
-      <td>{{ cars.modelYear }}</td>
-      <td>{{ cars.dailyPrice | currency: "TRY":"TL":"":"fr" }}</td>
-      <td>{{ cars.description }}</td>
-      <td>
-        <section style="float: right">
+
+<img
+[src]="
+  cars.imagePath != null
+    ? imageBasePath + cars.imagePath
+    : imageBasePath + defaultImg
+"
+class="img-fluid"
+alt="{{ cars.description }}"
+/>
+<div class="row">
+  <div class="card">
+    <div class="card-body">
+
+      <h5 class="card-title d-flex justify-content-center">
+        {{ cars.brandName }}
+      </h5>
+      <hr />
+      <h5 class="card-title d-flex justify-content-center">
+        {{ cars.modelName | uppercase }}
+      </h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <b>Kiralama Koşulları : </b> <br />
+        Ehliyet <br />
+        Kredi Kartı
+      </li>
+      <li class="list-group-item">Araç Özellikleri: {{ cars.description }}</li>
+    </ul>
+    <div class="card-body">
+      <section style="float: right">
           
-          <button
-            type="button"
-            style="position: -webkit-sticky"
-            class="btn btn-outline-success"
-            routerLink="rentals/add"
-          >
-            Kirala
-          </button>
-        </section>
-      </td>
-    </tr>
-  </tbody>
-  <br />
-</table>
+        <button
+          (click)="info()"
+          type="button"
+          style="position: -webkit-sticky"
+          class="btn btn-outline-success"
+          routerLink="rentals/add"
+        >
+          Kirala
+        </button>
+      </section>
+    </div>
+  </div>
+</div>
+
+

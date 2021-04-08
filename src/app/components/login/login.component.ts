@@ -39,6 +39,8 @@ export class LoginComponent implements OnInit {
       },responseError=>{
         this.toastrService.error(responseError.error)
       })
+    }else{
+      this.toastrService.error("Eksik Bilgi Girdiniz")
     }
   }
 }

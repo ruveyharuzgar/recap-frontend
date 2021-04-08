@@ -1,0 +1,31 @@
+<body class="text-center">
+    
+    <main class="form-signin">
+      <form [formGroup]="registerForm">
+        <h3 class="h3 mb-3 fw-normal">Sizi Aramızda Gördüğümüze Çok Sevindik</h3>
+        <h4 class="h3 mb-3 fw-normal">Üye Olmak İçin İlgili Alanları Eksiksiz Doldurunuz</h4>
+        <div class="form-floating">
+          <input formControlName="firstName" type="text" class="form-control" id="floatingInput" placeholder="Adınızı Giriniz">
+          <label for="floatingInput">Adınızı Giriniz</label>
+        </div>
+        <br>
+        <div class="form-floating">
+          <input formControlName="lastName" type="text" class="form-control" id="floatingInput" placeholder="Soyadınızı Giriniz">
+          <label for="floatingInput">Soyadınızı Giriniz</label>
+        </div>
+        <br>
+        <div class="form-floating">
+            <input formControlName="email" type="email" class="form-control" id="floatingInput" placeholder="E-mail Giriniz">
+            <label for="floatingInput">E-mail Adresinizi Giriniz</label>
+          </div>
+          <br>
+          <div class="form-floating">
+            <input formControlName="password" type="password" class="form-control" id="floatingPassword" placeholder="Şifrenizi Giriniz">
+            <label for="floatingPassword">Şifrenizi Giriniz</label>
+          </div>
+          <br>
+        <button class="w-100 btn btn-lg btn-success" (click)="register()">Üye ol</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
+      </form>
+    </main>
+      </body>
