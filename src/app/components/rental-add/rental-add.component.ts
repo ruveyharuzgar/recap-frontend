@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,FormControl,Validators } from "@angular/forms"
 import { ToastrService } from 'ngx-toastr';
+import { Car } from 'src/app/models/car';
 import { RentalService } from 'src/app/services/rental.service';
+import { CarDetailComponent } from '../car-detail/car-detail.component';
 
 @Component({
   selector: 'app-rental-add',
@@ -11,6 +13,7 @@ import { RentalService } from 'src/app/services/rental.service';
 export class RentalAddComponent implements OnInit {
 
   rentalAddForm:FormGroup;
+  carId:Car;
 
   constructor(
     private formBuilder:FormBuilder,
@@ -27,7 +30,7 @@ export class RentalAddComponent implements OnInit {
       carId:["",Validators.required],
       customerId:["",Validators.required],
       rentDate:["",Validators.required],
-      returnDate:["",Validators.required]
+      returnDate:[null]
     })
   }
 
@@ -37,10 +40,8 @@ export class RentalAddComponent implements OnInit {
       this.rentalService.add(rentalModel).subscribe(response=>{
         this.toastrService.success(response.message,"Başarılı")
       },responseError=>{
-          if(responseError.error.ValidationError.length>0){
-          for (let i = 0; i< responseError.error.ValidationError.length; i++) {
-          this.toastrService.error(responseError.error.ValidationError[i].ErrorMessage,"Doğrulama Hatası")
-          }
+          if(responseError.error.ValidationError){
+          this.toastrService.error(responseError.error.ValidationError.ErrorMessage,"Doğrulama Hatası")
         } 
       })
     }else{

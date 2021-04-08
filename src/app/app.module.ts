@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -35,6 +35,9 @@ import { RentalAddComponent } from './components/rental-add/rental-add.component
 import { BrandListComponent } from './components/brand-list/brand-list.component';
 import { ColorListComponent } from './components/color-list/color-list.component';
 import { CarListComponent } from './components/car-list/car-list.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthService } from './services/auth.service';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
@@ -62,6 +65,7 @@ registerLocaleData(localeFr, 'fr');
     BrandListComponent,
     ColorListComponent,
     CarListComponent,
+    LoginComponent,
 
   ],
   imports: [
@@ -77,7 +81,11 @@ registerLocaleData(localeFr, 'fr');
     }),
 
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS,
+      useClass:AuthInterceptor,
+      multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -66,9 +66,4 @@ export class CarDetailComponent implements OnInit {
     }
   }
 
-  addRent(car: Car) {
-    console.log(car);
-    this.toastrService.success('Araba kiralandı', car.modelName);
-    this.paymentService.addPayment(car);
-  }
 }

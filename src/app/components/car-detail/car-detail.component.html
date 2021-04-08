@@ -30,12 +30,12 @@
       <td>{{ cars.description }}</td>
       <td>
         <section style="float: right">
-          <app-payment></app-payment>
+          
           <button
-            (click)="addRent(cars)"
             type="button"
             style="position: -webkit-sticky"
             class="btn btn-outline-success"
+            routerLink="rentals/add"
           >
             Kirala
           </button>
