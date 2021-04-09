@@ -6,6 +6,8 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 
+<div class="row">
+  
 <img
 [src]="
   cars.imagePath != null
@@ -13,9 +15,8 @@
     : imageBasePath + defaultImg
 "
 class="img-fluid"
-alt="{{ cars.description }}"
+
 />
-<div class="row">
   <div class="card">
     <div class="card-body">
 
@@ -33,9 +34,9 @@ alt="{{ cars.description }}"
         Ehliyet <br />
         Kredi Kartı
       </li>
-      <li class="list-group-item">Araç Özellikleri: {{ cars.description }}</li>
+      <li class="list-group-item"> <b>Araç Özellikleri: </b> <br> {{ cars.description }}</li>
     </ul>
-    <div class="card-body">
+    <div class="card-footer">
       <section style="float: right">
           
         <button

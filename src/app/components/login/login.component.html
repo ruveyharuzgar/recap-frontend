@@ -32,9 +32,16 @@
       <div class="d-flex justify-content-center links" >
         <a class="link-warning" routerLink="/register">Üye değil misin? Tıkla ve kayıt ol </a>
       </div>
-      <button class="w-100 btn btn-lg btn-success" (click)="login()">
+      <button class="w-100 btn btn-lg btn-success" 
+      (click)="login()"
+      routerLink="/cars">
         Giriş Yap
       </button>
+<!-- 
+      <button class="w-100 btn btn-lg btn-success" (click)="deleteToken()">
+        Çıkış Yap
+      </button> 
+ -->
       <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
     </form>
   </main>

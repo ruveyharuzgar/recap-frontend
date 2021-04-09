@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,FormControl,Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder:FormBuilder,
     private authService:AuthService,
-    private toastrService:ToastrService
+    private toastrService:ToastrService,
+    private localStroge:LocalStorageService
   ) { }
 
   ngOnInit(): void {
@@ -42,5 +44,9 @@ export class LoginComponent implements OnInit {
     }else{
       this.toastrService.error("Eksik Bilgi Girdiniz")
     }
+  }
+
+  deleteToken(){
+    let removeToken=localStorage.removeItem("token")
   }
 }
