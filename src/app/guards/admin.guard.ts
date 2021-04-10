@@ -8,29 +8,26 @@ import { UserService } from '../services/user.service';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginGuard implements CanActivate {
-
+export class AdminGuard implements CanActivate {
 
   constructor(
     private authService:AuthService,
-    private toastrService:ToastrService,
-    private router:Router
-  ) {}
+    private router:Router,
+    private toastrService:ToastrService
+  ){}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(this.authService.isAuthenticated()){
       if(this.authService.isAdmin()){
-        this.router.navigate(["/dashboard"])
-        this.toastrService.info("Admin Giriş Sayfası")
+        this.router.navigate(["/"])
+        this.toastrService.success("admin giriş yaptı")
+        return true;
+      } 
+      else{
+        this.router.navigate(["cars"])
+        this.toastrService.error("Yetkiniz yok")
+        return false;
       }
-      return true;
-    } 
-    else{
-      this.router.navigate(["login"])
-      this.toastrService.info("Sisteme Giriş Yapmalısınız")
-      return false;
-    }
   }
   
 }

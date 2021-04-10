@@ -6,6 +6,19 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">  
+      <button class="btn btn-outline-success"
+      data-bs-toggle="collapse"
+      data-bs-target="#account-collapse"
+      > Filtrele
+        <app-brand></app-brand>
+        <app-color></app-color>
+      </button>
+    </div>
+    <div class="col-md-9">
+      
 <div class="mb-3">
   <label for="filterText" class="form-label">Ara</label>
   <input
@@ -20,8 +33,6 @@
 <div *ngIf="filterText" class="alert alert-success">
   {{ filterText }} aradınız.
 </div>
-
-
 <div class="row row-cols-1 row-cols-md-3 g-4">
   <div *ngFor="let car of cars | carFilterPipe: filterText" class="card">
     <img
@@ -64,4 +75,8 @@
       </section>
     </div>
   </div>
+</div>
+
+</div>
+</div>
 </div>

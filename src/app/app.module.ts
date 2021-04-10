@@ -39,6 +39,12 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { StartComponent } from './components/start/start.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { UserComponent } from './components/user/user.component';
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
@@ -68,6 +74,12 @@ registerLocaleData(localeFr, 'fr');
     CarListComponent,
     LoginComponent,
     RegisterComponent,
+    DashboardComponent,
+    StartComponent,
+    SettingsComponent,
+    NotFoundComponent,
+    SidebarComponent,
+    UserComponent,
 
   ],
   imports: [

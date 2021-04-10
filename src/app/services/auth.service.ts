@@ -5,7 +5,9 @@ import { LoginModel } from '../models/loginModel';
 import { ObjectResponseModel } from '../models/objectResponseModel';
 import { RegisterModel } from '../models/registerModel';
 import { TokenModel } from '../models/tokenModel';
+import { User } from '../models/user';
 import { LocalStorageService } from './local-storage.service';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,7 @@ export class AuthService {
 
   constructor(
     private httpClient:HttpClient,
-    private localStroge:LocalStorageService
+    private userService:UserService
   ) { }
 
   login(loginModel:LoginModel){
@@ -36,5 +38,11 @@ export class AuthService {
       return false;
     }
   }
-
+  isAdmin(){
+    if(localStorage.getItem("token")){
+      return true;
+    }else{
+      return false;
+    }
+  }
 }

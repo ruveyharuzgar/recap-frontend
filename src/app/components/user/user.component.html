@@ -3,7 +3,7 @@
   </div>
   
   <table *ngIf="dataLoaded==true" class="table"></table>
-  <h5 class="title">Tüm Müşteriler</h5>
+  <h5 class="title">Tüm Kullanıcılar</h5>
   <table class="table">
     <thead>
         <tr>
@@ -11,14 +11,12 @@
            <th>Müşteri Adı</th>
            <th>Müşteri Soyadı</th>
            <th>Müşteri Emaili</th>
-           <th>Şirket ismi</th>
         </tr>
     </thead>
-    <tr *ngFor="let customer of customers">
-        <td>{{customer.id}}</td>
-        <td>{{customer.firstName}}</td>
-        <td>{{customer.lastName}}</td>
-        <td>{{customer.email}}</td>
-        <td>{{customer.companyName}}</td>
+    <tr *ngFor="let user of users">
+        <td>{{user.id}}</td>
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.email}}</td>
     </tr>
   </table>

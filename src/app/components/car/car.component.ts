@@ -88,13 +88,7 @@ export class CarComponent implements OnInit {
       } */
     })
   }
-  getAllCarDetailsbyFilterName(brandName:string,colorName:string)
-  {
-    this.carService.getAllCarDetailsbyFilterName(brandName,colorName).subscribe((response)=>{
-      this.cars=response.data;
-      this.dataLoaded=true;
-  })
-  }
+
   setCurrentCar(car: Car) {
     this.currentCar=car;
   }
