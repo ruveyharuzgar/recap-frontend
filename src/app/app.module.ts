@@ -45,6 +45,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { UserComponent } from './components/user/user.component';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
@@ -80,6 +81,7 @@ registerLocaleData(localeFr, 'fr');
     NotFoundComponent,
     SidebarComponent,
     UserComponent,
+    UserDetailComponent,
 
   ],
   imports: [

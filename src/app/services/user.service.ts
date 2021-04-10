@@ -24,10 +24,19 @@ export class UserService {
     let newPath = this.apiUrl+"users/getclaims"
     return this.httpClient.get<ObjectResponseModel<OperationClaim>>(newPath);
   }
+  getUserByEmail(email: string): Observable<ObjectResponseModel<User>> {
+    let newPath = this.apiUrl + 'users/getbymail?email=' + email;
+    return this.httpClient.get<ObjectResponseModel<User>>(newPath);
+  }
+
   add(user:User):Observable<ListModel>
   {
     let newPath = this.apiUrl+ "users/add";
     return this.httpClient.post<ListModel>(newPath,user);
   }
-  
+ 
+  update(user: User): Observable<ListModel> {
+    let newPath = this.apiUrl + 'users/update';
+    return this.httpClient.post<ListModel>(newPath, user);
+  }
 }

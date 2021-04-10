@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ObjectResponseModel } from 'src/app/models/objectResponseModel';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
@@ -25,4 +26,5 @@ export class UserComponent implements OnInit {
       this.dataLoaded=true;
     })
   }
+  
 }

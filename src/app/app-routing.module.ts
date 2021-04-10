@@ -14,19 +14,24 @@ import { ColorUpdateComponent } from './components/color-update/color-update.com
 import { CustomerComponent } from './components/customer/customer.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
+import { NaviComponent } from './components/navi/navi.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RentalAddComponent } from './components/rental-add/rental-add.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { StartComponent } from './components/start/start.component';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { UserComponent } from './components/user/user.component';
 import { AdminGuard } from './guards/admin.guard';
 import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
-  { path: '',component: CarComponent },
-
+  { path: '',component:NaviComponent ,
+  children: [ 
+    { path:'',component:CarComponent}
+  ]
+  },
   { path: 'dashboard',
    component: DashboardComponent,
    canActivate: [AdminGuard],
@@ -38,6 +43,11 @@ const routes: Routes = [
   ]}, 
 
   { path: 'cars',component: CarComponent },
+  
+  { path: 'userDetail',component: UserDetailComponent },
+
+
+  { path: 'cars/start',component: StartComponent },
 
   { path: 'cars/brand/:brandId',component: CarComponent },
   

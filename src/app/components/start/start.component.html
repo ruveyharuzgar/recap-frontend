@@ -1,3 +1,16 @@
-
-<app-car></app-car>
-<router-outlet></router-outlet>
+<div>
+    <nav class="navbar navbar-expand navbar-light" style="background-color: #fcfcfc;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/cars/start">ReCap</a>
+          <button class="navbar-toggler" type="button" routerLink="/cars/start" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          </button>
+          <div class="home">
+            <button type="button" class="btn btn-outline-success  navbar-btn" routerLink="/userDetail">Profili Görüntüle</button>
+          </div>
+      
+        </div>
+      </nav>
+    
+    <app-car></app-car>
+    <router-outlet></router-outlet>
+</div>
